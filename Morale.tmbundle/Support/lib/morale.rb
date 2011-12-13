@@ -12,7 +12,7 @@ comment.each_line do |line|
 end
 cleansed.strip!
 
-Morale::Client.new('bf', 't1kxnkIzCZfvldv2MCF5').projects.each do |project|
+Morale::Client.new('bf', '').projects.each do |project|
   puts "Project: #{project['project']['name']}"
 end
 
