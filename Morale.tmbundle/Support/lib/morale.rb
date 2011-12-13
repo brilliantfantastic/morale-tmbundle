@@ -12,8 +12,14 @@ comment.each_line do |line|
 end
 cleansed.strip!
 
-Morale::Client.new('bf', '').projects.each do |project|
-  puts "Project: #{project['project']['name']}"
-end
+#TODO: Store the subdomain, api key, and project # (use same storage as CLI)
+client = Morale::Client.new('bf', '')
+# client.projects.each do |project|
+#   puts "Project: #{project['project']['name']}"
+# end
+t = client.ticket(100, cleansed)
+ticket = t['task'] unless t['task'].nil?
+ticket = t['bug'] unless t['bug'].nil?
+ticket = t if ticket.nil?
 
-puts "Hello! You are supposed to process the comment '#{cleansed}'"
+puts "Hello! You are supposed to process the comment '#{cleansed}' with ticket ##{ticket['identifier']}"
