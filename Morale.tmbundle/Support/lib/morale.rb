@@ -3,14 +3,19 @@
 require 'rubygems'
 require 'morale/client'
 
+require "#{File.dirname(__FILE__)}/morale/dialog"
+
 comment = ARGV[0]
 
-#TODO: Store the subdomain, api key, and project # (use same storage as CLI)
 #TODO: Use the morale/storage stuff && morale/credentials_store
 #TODO: Check that the credentials are there
 # Get the subdomain from the .morale directory
 credentials = File.read "#{ENV['HOME']}/.morale/credentials"
 creds = credentials.split("\n") if credentials
+
+if creds.nil?
+  Dialog.new("Invalid credentials. Please run 'morale login' from the command line.").display
+end
 
 # Remove the comment characters, any leading and trailing spaces, carriage returns, and line feeds
 cleansed = ''
@@ -32,9 +37,9 @@ unless matches.nil?
 end
 
 client = Morale::Client.new(creds[0], creds[1])
-t = client.ticket(creds[2].to_i, cleansed)
-ticket = t['task'] unless t['task'].nil?
-ticket = t['bug'] unless t['bug'].nil?
-ticket = t if ticket.nil?
+#t = client.ticket(creds[2].to_i, cleansed)
+#ticket = t['task'] unless t['task'].nil?
+#ticket = t['bug'] unless t['bug'].nil?
+#ticket = t if ticket.nil?
 
-puts "#{comment} (##{ticket['identifier']})"
+#puts "#{comment} (##{ticket['identifier']})"
