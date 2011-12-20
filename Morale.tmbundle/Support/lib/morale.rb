@@ -1,36 +1,21 @@
 #!/usr/bin/env ruby
 
 require "#{File.dirname(__FILE__)}/morale/comment_cleanser"
+require "#{File.dirname(__FILE__)}/morale/comment_parser"
+require "#{File.dirname(__FILE__)}/morale/create_command"
 require "#{File.dirname(__FILE__)}/morale/credentials_store"
+require "#{File.dirname(__FILE__)}/morale/credentials_validator"
+require "#{File.dirname(__FILE__)}/morale/delete_command"
 require "#{File.dirname(__FILE__)}/morale/dialog"
-require "#{File.dirname(__FILE__)}/morale/pattern_finder"
 require "#{File.dirname(__FILE__)}/morale/ticket"
+require "#{File.dirname(__FILE__)}/morale/update_parser"
+require "#{File.dirname(__FILE__)}/morale/archive_parser"
 
-comment = ARGV[0]
+command = ARGV[0]
+comment = ARGV[1]
 
-creds = CredentialsStore.fetch
-
-# Check for valid credentials
-if creds.nil? || creds.length < 2 # missing api key or subdomain
-  Dialog.new("Invalid credentials. Please run 'morale login' from the command line.").display
-elsif creds.length == 2 # missing project
-  Dialog.new("Invalid project. Please run 'morale projects --change' from the command line.").display
-end
-
-valid = !creds.nil? && creds.length == 3
-if valid
-  # Remove the comment characters, any leading and trailing spaces, carriage returns, and line feeds
-  cleansed = CommentCleanser.cleanse comment
-
-  # See if this is an update
-  pattern = PatternFinder.new(cleansed, comment)
-  if pattern.update?
-    cleansed = pattern.cleansed
-    comment = pattern.original
-  end
-
-  ticket = Ticket.new(creds[0], creds[1], creds[2].to_i).parse(cleansed)
-  puts "#{comment} (##{ticket['identifier']})"
-else
-  puts comment
+if command == "--create"
+  puts CreateCommand.run comment
+elsif command == "--delete"
+  puts DeleteCommand.run comment
 end

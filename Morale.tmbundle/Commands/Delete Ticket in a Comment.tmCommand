@@ -5,20 +5,20 @@
 	<key>beforeRunningCommand</key>
 	<string>nop</string>
 	<key>command</key>
-	<string>ruby "$TM_BUNDLE_SUPPORT/lib/morale.rb" "--create" "$TM_SELECTED_TEXT"</string>
+	<string>ruby "$TM_BUNDLE_SUPPORT/lib/morale.rb" "--delete" "$TM_SELECTED_TEXT"</string>
 	<key>fallbackInput</key>
 	<string>scope</string>
 	<key>input</key>
 	<string>selection</string>
 	<key>keyEquivalent</key>
-	<string>@M</string>
+	<string>@</string>
 	<key>name</key>
-	<string>Create / Update Ticket From a Comment</string>
+	<string>Delete Ticket in a Comment</string>
 	<key>output</key>
 	<string>replaceSelectedText</string>
 	<key>scope</key>
-	<string>comment</string>
+	<string>source, comment</string>
 	<key>uuid</key>
-	<string>BDF318FF-C5FE-4A75-B558-13287430B38C</string>
+	<string>93B9BEBA-7078-4A4D-924B-BA9CF14EA42F</string>
 </dict>
 </plist>
