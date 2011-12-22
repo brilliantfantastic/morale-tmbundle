@@ -27,7 +27,7 @@ Installation
 	# If that directory does not exist, you have to make the directory.
 	mkdir ~/Library/"Application Support"/TextMate/Bundles
 
-	git clone git@github.com:brilliantfantastic/morale-tmbundle.git/morale-tmbundle "morale.tmbundle"
+	git clone git@github.com:brilliantfantastic/morale-tmbundle.git "morale.tmbundle"
 	morale projects --change
 
 Released under the [MIT license](http://www.opensource.org/licenses/mit-license.php).
