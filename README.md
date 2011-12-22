@@ -23,6 +23,11 @@ Installation
 -------------
 
 	cd ~/Library/"Application Support"/TextMate/Bundles
+
+If that directory does not exist, you have to make the directory.
+
+	mkdir ~/Library/"Application Support"/TextMate/Bundles
+
 	git clone git@github.com:brilliantfantastic/morale-tmbundle.git/morale-tmbundle "morale.tmbundle"
 	morale projects --change
 
