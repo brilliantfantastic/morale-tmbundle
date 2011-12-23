@@ -34,6 +34,11 @@ Features
 --------
 
 * You can __create Morale tickets__ by highlighting a comment and using the key combination (default is ⇧⌘M) to send the comment to Morale. This will return the identifier for the newly created ticket and add it to the end of the comment in the format of '(#\d)'.
+
+![before the comment is parsed](https://s3.amazonaws.com/github-morale-tmbundle-screenshots/before-create.jpg "")
+
+![after the comment is parsed](https://s3.amazonaws.com/github-morale-tmbundle-screenshots/after-create.jpg "")
+
 * You can __update Morale tickets__ by highlighting a comment with the identifier and using the same key combination for creating the ticket (default is ⇧⌘M) to send the comment to Morale. This will update the ticket with the identifier in the comment. If there is no identifier, a new comment will be created.
 * You can __archive Morale tickets__ by highlighting the comment with the identifier and using the key combination (default is ⇧⌫) to archive the comment in Morale. This will delete the comment from the source code.
 
